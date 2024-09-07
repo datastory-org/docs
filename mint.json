@@ -2,12 +2,12 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/datastory.webp",
+    "light": "/logo/datastory.webp"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
+    "primary": "#008A8F",
     "light": "#07C983",
     "dark": "#0D9373",
     "anchors": {
@@ -17,62 +17,53 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Have a question?",
+      "url": "mailto:hello@datastory.org"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Use Datastory",
+    "url": "https://datastory.tech"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "Data manager (CMS)",
+      "url": "data-manager"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Statistics & tables",
+      "url": "statistics"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Media Assets",
+      "url": "media-assets"
+    },
+    {
+      "name": "Websites",
+      "url": "websites-pages"
+    },
+    {
+      "name": "Pages and blocks",
+      "url": "pages-and-blocks"
+    },
+    {
+      "name": "Visualizations",
+      "url": "visualizations"
+    },
+    {
+      "name": "AI & Insights",
+      "url": "ai-insights"
     }
   ],
+  "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Endpoint Examples",
@@ -81,11 +72,39 @@
         "api-reference/endpoint/create",
         "api-reference/endpoint/delete"
       ]
+    },
+    {
+      "group": "Data manager (CMS)",
+      "pages": ["data-manager/items", "data-manager/classes"]
+    },
+    {
+      "group": "Statistics & data tables",
+      "pages": [
+        "statistics/get-stats",
+        "statistics/working-with-cubes",
+        "statistics/simple-data-tables"
+      ]
+    },
+    {
+      "group": "Media Assets",
+      "pages": ["media-assets/assets"]
+    },
+    {
+      "group": "Websites & Pages",
+      "pages": ["websites-pages/websites", "websites-pages/pages"]
+    },
+    {
+      "group": "Visualizations",
+      "pages": ["visualizations/introduction"]
+    },
+    {
+      "group": "AI & Insights",
+      "pages": ["ai-insights/introduction"]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/datastory",
+    "github": "https://github.com/datastory-org",
+    "linkedin": "https://www.linkedin.com/company/datastory"
   }
 }

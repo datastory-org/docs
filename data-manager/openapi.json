@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://platform.datastory.tech/api/v1"
+      "url": "http://datastory.tech/api/v1"
     }
   ],
   "security": [
@@ -163,78 +163,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/items": {
-      "get": {
-        "summary": "Fetch items",
-        "parameters": [
-          {
-            "name": "class_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "Country"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10
-            },
-            "example": 4
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A list of items",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "examples": {
-                  "example1": {
-                    "summary": "Example with class_id = Country and limit = 4",
-                    "value": [
-                      {
-                        "id": "1",
-                        "name": "USA"
-                      },
-                      {
-                        "id": "2",
-                        "name": "Canada"
-                      },
-                      {
-                        "id": "3",
-                        "name": "Mexico"
-                      },
-                      {
-                        "id": "4",
-                        "name": "Brazil"
-                      }
-                    ]
-                  }
                 }
               }
             }
