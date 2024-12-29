@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Datastory API Docs",
   "logo": {
     "dark": "/logo/datastory.webp",
     "light": "/logo/datastory.webp"
@@ -9,6 +9,7 @@
     "default": "light",
     "isHidden": true
   },
+
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#008A8F",
@@ -26,33 +27,29 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Use Datastory",
+    "name": "Datastory",
     "url": "https://datastory.tech"
   },
   "tabs": [
     {
-      "name": "Data manager (CMS)",
+      "name": "Schema",
       "url": "data-manager"
     },
     {
-      "name": "Statistics & tables",
+      "name": "Content",
+      "url": "content"
+    },
+    {
+      "name": "Statistics",
       "url": "statistics"
-    },
-    {
-      "name": "Media Assets",
-      "url": "media-assets"
-    },
-    {
-      "name": "Websites",
-      "url": "websites-pages"
-    },
-    {
-      "name": "Pages and blocks",
-      "url": "pages-and-blocks"
     },
     {
       "name": "Visualizations",
       "url": "visualizations"
+    },
+    {
+      "name": "Websites",
+      "url": "websites-pages"
     },
     {
       "name": "AI & Insights",
@@ -63,38 +60,42 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "quickstart"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "group": "Platform overview",
+      "pages": ["Studio", "Data manager", "Open Data"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Basics",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "authorization",
+        "workspace",
+        "permissions",
+        "docs/basics/system-fields",
+        "glossary"
       ]
     },
+
     {
-      "group": "Data manager (CMS)",
+      "group": "Schema",
       "pages": ["data-manager/items", "data-manager/classes"]
     },
     {
-      "group": "Statistics & data tables",
+      "group": "Content",
+      "pages": ["content/items", "content/classes"]
+    },
+    {
+      "group": "Statistics",
       "pages": [
-        "statistics/get-stats",
+        "statistics/intro",
         "statistics/working-with-cubes",
         "statistics/simple-data-tables"
       ]
     },
+
     {
-      "group": "Media Assets",
-      "pages": ["media-assets/assets"]
-    },
-    {
-      "group": "Websites & Pages",
+      "group": "Websites",
       "pages": ["websites-pages/websites", "websites-pages/pages"]
     },
     {
