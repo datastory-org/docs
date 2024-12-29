@@ -1,6 +1,6 @@
 ---
-title: 'Development'
-description: 'Learn how to preview changes locally'
+title: "Development"
+description: "Learn how to preview changes locally"
 ---
 
 <Info>
@@ -10,16 +10,38 @@ description: 'Learn how to preview changes locally'
 
 Step 1. Install Mintlify on your OS:
 
+<Frame as="div">
+  Adjust the caption and image of your Frame component here.
+</Frame>
+
+```javascript
+dsdsd
+```
+
+<Steps>
+  <Step title="Step 1">
+
+  </Step>
+
+  <Step title="Step 2">
+
+  </Step>
+
+  <Step title="Step 3">
+
+  </Step>
+</Steps>
+
+
+
 <CodeGroup>
+  ```bash npm
+  npm i -g mintlify
+  ```
 
-```bash npm
-npm i -g mintlify
-```
-
-```bash yarn
-yarn global add mintlify
-```
-
+  ```bash yarn
+  yarn global add mintlify
+  ```
 </CodeGroup>
 
 Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
@@ -49,15 +71,13 @@ Error: listen EADDRINUSE: address already in use :::3000
 Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
 
 <CodeGroup>
+  ```bash npm
+  npm i -g mintlify@latest
+  ```
 
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
+  ```bash yarn
+  yarn global upgrade mintlify
+  ```
 </CodeGroup>
 
 ## Deployment
@@ -81,16 +101,17 @@ Here's how to solve some common problems when working with the CLI.
   <Accordion title="Mintlify is not loading">
     Update to Node v18. Run `mintlify install` and try again.
   </Accordion>
+
   <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
+    Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
+    folder. Then Open the Git Bash in this location and run `git clone
+    https://github.com/mintlify/mint.git`.
 
-Repeat step 3.
-
+    Repeat step 3.
   </Accordion>
+
   <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
+    Try navigating to the root of your device and delete the \~/.mintlify folder.
     Then run `mintlify dev` again.
   </Accordion>
 </AccordionGroup>
