@@ -1,0 +1,110 @@
+---
+title: "Clients"
+description: "Easily interact with the Datastory API using TypeScript and Python clients."
+---
+
+Datastory provides official clients to simplify API interactions. Instead of manually handling headers, parsing JSON, and constructing requests, these clients let you focus on your data and application logic.
+
+---
+
+## TypeScript Client
+
+Using the TypeScript client, you can interact with Datastory’s API in a strongly typed environment, making your code more predictable and maintainable.
+
+### Installation
+
+```bash
+npm install @datastory/ts-client --save
+```
+
+### Usage Example
+
+<CodeGroup>
+
+```ts TypeScript
+import { DatastoryClient } from "@datastory/ts-client";
+
+const client = new DatastoryClient({
+  token: "<YOUR_ACCESS_TOKEN>",
+  version: "v2",
+});
+
+async function queryItems() {
+  try {
+    const response = await client.items.query({
+      query: {
+        // your query parameters go here
+      },
+    });
+    console.log("Success:", response.data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+queryItems();
+```
+
+</CodeGroup>
+
+1. **Initialization**: Instantiate a `DatastoryClient`, providing your API token and desired version (e.g., `v2`).
+2. **Query**: Call `items.query()` or other client methods to interact with Datastory.
+3. **Error Handling**: Wrap requests in `try/catch` blocks to handle errors gracefully.
+
+---
+
+## Python Client
+
+The Python client for Datastory simplifies sending queries and managing authentication, allowing you to focus on your data-driven tasks.
+
+### Installation
+
+```bash
+pip install datastory-client
+```
+
+### Usage Example
+
+<CodeGroup>
+
+```python Python
+from datastory-client import DatastoryClient
+
+client = DatastoryClient(
+    token="<YOUR_ACCESS_TOKEN>",
+    version="v2"
+)
+
+def query_items():
+    try:
+        response = client.items.query({
+            "query": {
+                # your query parameters go here
+            }
+        })
+        print("Success:", response)
+    except Exception as e:
+        print("Error:", str(e))
+
+query_items()
+```
+
+```
+
+</CodeGroup>
+
+1. **Initialization**: Create a `DatastoryClient`, passing in your token and API version.
+2. **Query**: Use the client’s built-in methods (like `items.query()`) to fetch data from the API.
+3. **Exception Handling**: Catch potential exceptions to handle timeouts, invalid tokens, or network issues.
+
+---
+
+## Next Steps
+
+- **Advanced Configuration**: Check out the SDK’s documentation for advanced usage, such as custom error handling or retries.
+- **Additional APIs**: Explore other endpoints beyond `items.query` to manage models, cubes, user data, and more.
+- **Security Best Practices**: Keep your access token private and rotate it regularly.
+
+```
+
+</CodeGroup>

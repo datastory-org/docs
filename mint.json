@@ -12,12 +12,12 @@
 
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#008A8F",
+    "primary": "#7847F5",
     "light": "#07C983",
     "dark": "#0D9373",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#7847F5",
+      "to": "#7847F5"
     }
   },
   "topbarLinks": [
@@ -28,7 +28,8 @@
   ],
   "topbarCtaButton": {
     "name": "Datastory",
-    "url": "https://datastory.tech"
+    "url": "https://datastory.tech",
+    "style": "roundedRectangle"
   },
   "tabs": [
     {
@@ -60,21 +61,26 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart"]
-    },
-    {
-      "group": "Platform overview",
-      "pages": ["Studio", "Data manager", "Open Data"]
-    },
-    {
-      "group": "Basics",
       "pages": [
+        "docs/basics/introduction",
+        "docs/basics/quickstart",
+        "docs/basics/clients"
+      ]
+    },
+    {
+      "group": "API essentials",
+      "pages": [
+        "docs/basics/data-model",
         "authorization",
         "workspace",
         "permissions",
         "docs/basics/system-fields",
         "glossary"
       ]
+    },
+    {
+      "group": "Platform overview",
+      "pages": ["Studio", "Data manager", "Open Data", "Open Blocks"]
     },
 
     {

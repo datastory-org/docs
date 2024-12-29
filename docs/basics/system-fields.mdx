@@ -3,36 +3,39 @@ title: "System fields"
 description: "Introduction to the Datastory API"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-referen ce folder.
-</Note>
+## System fields
 
-## Welcome
+All default, and custom content types come with some managed system fields. These fields reflect certain states of your content, such as when it was last updated, or published at.
 
-Welcome to Datastory, your go-to platform for building powerful data-driven applications. Datastory enables developers to seamlessly integrate data analytics and visualization into their applications, saving time and enhancing productivity. From startups to large enterprises, Datastory is trusted by many to deliver insightful data stories.
+## Default model fields
 
-## Getting Started
+These fields are included with all content models you create within Hygraph.
 
-Learn how to set up your development environment to authenticate with our API. Use our examples to search and get started in minutes.
+| Field            | Type      | Description                                        |
+| ---------------- | --------- | -------------------------------------------------- |
+| id               | ID!       | Unique for each content entry                      |
+| createdAt        | DateTime! | Timestamp for when the content entry was created   |
+| createdBy        | User      | The user who created the content entry             |
+| updatedAt        | DateTime! | Timestamp for when the content entry was updated   |
+| updatedBy        | User      | The user who last updated the content entry        |
+| publishedAt      | DateTime! | Timestamp for when the content entry was published |
+| publishedBy      | User      | The user who last published the content entry      |
+| documentInStages | [model]   | Query the current document in other stages         |
 
-## Authenticate
+## User fields
 
-Learn how to simply authenticate to our API. Datastory provides three simple ways for all applications.
+Since the User model is included with every project, it also comes with some predefined fields, as well as all of the system fields above (but not createdBy, updatedBy, and publishedBy).
 
-## Lightning-fast Search
+The User model is part of "user attribution", and is connected with content entries. This connection allows you to see who created, updated, and published content entries.
 
-Learn how to use our lightning-fast search to find the data you need. Super easy to use and built on cutting-edge search algorithms.
+| Field       | Type      | Description                                      |
+| ----------- | --------- | ------------------------------------------------ |
+| id          | ID!       | The ID of the user                               |
+| name        | String!   | The name of the user                             |
+| picture     | String    | The profile picture URL                          |
+| kind        | UserKind! | The type of user - either MEMBER, PAT, or PUBLIC |
+| createdAt   | DateTime! | The created at date and time of the user         |
+| updatedAt   | DateTime! | The last updated at date and time of the user    |
+| publishedAt | DateTime  | The last published at date and time of the user  |
 
-## Introduction
-
-Your go-to reference for building successful integrations with the Datastory API.
-
-Datastory's REST API allows developers to query data about various datasets, perform complex data analyses, and visualize results. In addition to returning data, many of these endpoints allow you to perform create, update, and delete (CRUD) actions as well.
-
-📘
-New Here?
-
-Just getting started with the Datastory API? We've got a guide for that! Check out our getting started guide, to quickly get up to speed with the API.
-
-The Datastory API empowers developers to build amazing integrations that connect important services to Datastory, and create innovative, first-class experiences for data-driven development.
+If content is mutated with a Permanent Auth Token then kind will return PAT. If Public API Permissions are enabled, and

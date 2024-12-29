@@ -1,0 +1,75 @@
+---
+title: "Quickstart"
+description: "Get started with Datastory's API in 5 minutes"
+---
+
+This guide walks you through making your first request to the Datastory API. It only takes a few minutes to set up, and by the end, you’ll have a basic understanding of how to communicate with Datastory over HTTPS.
+
+---
+
+## Base Endpoint
+
+All API requests should be sent to the following base endpoint:
+
+https://api.datastory.tech/{version}
+
+## Issuing a basic request
+
+Here's how you could query your items in JS/TypeScript and Python:
+
+<CodeGroup>
+
+```ts TypeScript
+const baseUrl = "https://api.datastory.tech/v2";
+const endpoint = `${baseUrl}/items/query`;
+
+fetch(endpoint, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "Bearer <YOUR_ACCESS_TOKEN>",
+  },
+  body: JSON.stringify({
+    query: {
+      // your query parameters go here
+    },
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Success:", data);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+```
+
+```python Python
+import requests
+
+base_url = "https://api.datastory.tech/v2"
+endpoint = f"{base_url}/items/query"
+
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer <YOUR_ACCESS_TOKEN>"
+}
+
+payload = {
+    "query": {
+        # your query parameters go here
+    }
+}
+
+response = requests.post(endpoint, json=payload, headers=headers)
+
+if response.status_code == 200:
+    data = response.json()
+    print("Success:", data)
+else:
+    print(f"Error {response.status_code}: {response.text}")
+```
+
+</CodeGroup>
+
+Read the next chapter to learn more about using Clients that make it even easier to use the API.
