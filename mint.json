@@ -5,6 +5,10 @@
     "dark": "/logo/datastory.webp",
     "light": "/logo/datastory.webp"
   },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
+  },
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#008A8F",
