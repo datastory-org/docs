@@ -34,27 +34,40 @@
   "tabs": [
     {
       "name": "Schema",
-      "url": "data-manager"
+      "url": "docs/schema"
     },
     {
       "name": "Content",
-      "url": "content"
+      "url": "docs/content"
     },
     {
       "name": "Statistics",
-      "url": "statistics"
+      "url": "docs/statistics"
     },
     {
       "name": "Visualizations",
-      "url": "visualizations"
+      "url": "docs/visualizations"
+    },
+    {
+      "name": "Templates",
+      "url": "docs/templates"
     },
     {
       "name": "Websites",
-      "url": "websites-pages"
+      "url": "docs/websites-pages"
+    },
+
+    {
+      "name": "AI",
+      "url": "docs/ai"
     },
     {
-      "name": "AI & Insights",
-      "url": "ai-insights"
+      "name": "Open data",
+      "url": "docs/open-data"
+    },
+    {
+      "name": "Workspace, Users, Tokens",
+      "url": "docs/workspaces"
     }
   ],
   "anchors": [],
@@ -84,33 +97,75 @@
     },
 
     {
-      "group": "Schema",
-      "pages": ["data-manager/items", "data-manager/classes"]
+      "group": "Models",
+      "pages": [
+        "docs/schema/models/overview",
+        "docs/schema/models/create-model",
+        "docs/schema/models/update-model",
+        "docs/schema//models/list-models",
+        "docs/schema//models/duplicate-model"
+      ]
     },
+
+    {
+      "group": "Fields",
+      "pages": [
+        "docs/schema/fields/overview",
+        "docs/schema/fields/create-field",
+        "docs/schema/fields/update-field",
+        "docs/schema/fields/list-fields",
+        "docs/schema/fields/delete-field"
+      ]
+    },
+
     {
       "group": "Content",
-      "pages": ["content/items", "content/classes"]
+      "pages": [
+        "docs/content/overview",
+        "docs/content/fetch-items",
+        "docs/content/create-items",
+        "docs/content/update-items",
+        "docs/content/publish-items",
+        "docs/content/unpublish-items",
+
+        "docs/content/search (deprecated)",
+        "docs/content/duplicate-items (beta)"
+      ]
     },
     {
-      "group": "Statistics",
+      "group": "Media assets",
       "pages": [
-        "statistics/intro",
-        "statistics/working-with-cubes",
-        "statistics/simple-data-tables"
+        "docs/content/media/overview",
+        "docs/content/media/create-assets",
+        "docs/content/media/list-assets",
+        "docs/content/media/delete-assets",
+        "docs/content/media/update-assets"
+      ]
+    },
+    {
+      "group": "Statistics & Insights",
+      "pages": [
+        "docs/statistics/intro",
+        "docs/statistics/working-with-cubes",
+        "docs/statistics/simple-data-tables"
       ]
     },
 
     {
       "group": "Websites",
-      "pages": ["websites-pages/websites", "websites-pages/pages"]
+      "pages": ["docs/websites-pages/overview"]
     },
     {
       "group": "Visualizations",
-      "pages": ["visualizations/introduction"]
+      "pages": ["docs/visualizations/overview"]
     },
     {
-      "group": "AI & Insights",
-      "pages": ["ai-insights/introduction"]
+      "group": "AI",
+      "pages": ["docs/ai/overview"]
+    },
+    {
+      "group": "Open data",
+      "pages": ["docs/open-data/overview"]
     }
   ],
   "footerSocials": {
