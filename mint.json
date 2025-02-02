@@ -10,6 +10,13 @@
     "isHidden": true
   },
 
+  "api": {
+    "request": {
+      "example": {
+        "languages": ["javascript", "python", "curl"]
+      }
+    }
+  },
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#7847F5",
@@ -41,8 +48,12 @@
       "url": "docs/content"
     },
     {
-      "name": "Statistics",
+      "name": "Data cubes",
       "url": "docs/statistics"
+    },
+    {
+      "name": "Tables",
+      "url": "docs/tables"
     },
     {
       "name": "Visualizations",
@@ -92,6 +103,16 @@
       ]
     },
     {
+      "group": "DataCollectionEvents",
+      "pages": [
+        "api-reference/data-collection-events/endpoints",
+        "api-reference/data-collection-events/incoming-object",
+        "api-reference/data-collection-events/list-incoming",
+        "api-reference/data-collection-events/outgoing-object",
+        "api-reference/data-collection-events/list-outgoing"
+      ]
+    },
+    {
       "group": "Platform overview",
       "pages": ["Studio", "Data manager", "Open Data", "Open Blocks"]
     },
@@ -102,8 +123,8 @@
         "docs/schema/models/overview",
         "docs/schema/models/create-model",
         "docs/schema/models/update-model",
-        "docs/schema//models/list-models",
-        "docs/schema//models/duplicate-model"
+        "docs/schema/models/list-models",
+        "docs/schema/models/duplicate-model"
       ]
     },
 
@@ -143,11 +164,59 @@
       ]
     },
     {
-      "group": "Statistics & Insights",
+      "group": "Statistics",
       "pages": [
-        "docs/statistics/intro",
-        "docs/statistics/working-with-cubes",
-        "docs/statistics/simple-data-tables"
+        "docs/statistics/overview",
+        "docs/statistics/recipe-for-bulk-load"
+      ]
+    },
+
+    {
+      "group": "Measures",
+      "pages": [
+        "docs/statistics/measures/create-measures",
+        "docs/statistics/measures/fetch-measures",
+        "docs/statistics/measures/delete-measures"
+      ]
+    },
+
+    {
+      "group": "Data cubes",
+      "pages": [
+        "docs/statistics/cubes/create-cubes",
+        "docs/statistics/cubes/fetch-cubes",
+        "docs/statistics/cubes/delete-cubes"
+      ]
+    },
+    {
+      "group": "Observations",
+      "pages": [
+        "docs/statistics/cubes/create-observations",
+        "docs/statistics/cubes/fetch-observations",
+        "docs/statistics/cubes/delete-observations"
+      ]
+    },
+
+    {
+      "group": "Insights",
+      "pages": [
+        "docs/statistics/insights/suggest-charts",
+        "docs/statistics/insights/suggest-insights"
+      ]
+    },
+
+    {
+      "group": "Tables & Bindings",
+      "pages": ["docs/tables/overview"]
+    },
+
+    {
+      "group": "Tables",
+      "pages": [
+        "docs/tables/create",
+        "docs/tables/fetch",
+        "docs/tables/delete-tables",
+        "docs/tables/detect-columns"
       ]
     },
 

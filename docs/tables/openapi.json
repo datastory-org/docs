@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Edgee endpoints",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://api.edgee.app"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/table": {
+      "post": {
+        "operationId": "create",
+        "summary": "Create a new ApiToken",
+        "description": "Creates a new ApiToken. The ApiToken is returned, including its `token` field, which you should record for future reference. **Be careful, this token is only returned once, when the token is created.**",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiTokenCreateInput"
+              },
+              "examples": {
+                "ProductionTokenExample": {
+                  "value": {
+                    "name": "Production API Token",
+                    "expires_at": "2025-01-01T00:00:00Z"
+                  },
+                  "summary": "Long-lived token for production use"
+                },
+                "BrowserSessionExample": {
+                  "value": {
+                    "name": "Browser Session Token"
+                  },
+                  "summary": "Token without expiration (use with caution)"
+                },
+                "TemporaryAccessExample": {
+                  "value": {
+                    "name": "Temporary Access Token",
+                    "expires_at": "2023-12-31T23:59:59Z"
+                  },
+                  "summary": "Short-lived token for temporary access"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The created ApiToken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiToken"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiToken": {
+        "type": "object",
+        "description": "An ApiToken is a unique identifier that you can use to authenticate requests to the API. You can create as many ApiTokens as you need.",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "String representing the object's type. Objects of the same type share the same value.",
+            "readOnly": true,
+            "example": "api_token"
+          },
+          "id": {
+            "type": "string",
+            "description": "This is the internal ID for this ApiToken. You don't need to record this information, since you will not need to use it.",
+            "readOnly": true
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user that created this ApiToken.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the ApiToken.",
+            "example": "Production API Token"
+          },
+          "from_browser": {
+            "type": "boolean",
+            "description": "Whether this ApiToken was created from the browser.",
+            "readOnly": true
+          },
+          "last_used_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The last time this ApiToken was used.",
+            "readOnly": true
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time this ApiToken expires."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time at which the object was created.",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time at which the object was last updated.",
+            "readOnly": true
+          },
+          "token": {
+            "type": "string",
+            "description": "The actual token that you will use to authenticate your requests. > **Be careful, this token is only returned once, when the token is created.**",
+            "readOnly": true
+          }
+        }
+      },
+      "ApiTokenCreateInput": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ApiToken"
+          }
+        ],
+        "required": ["name"]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "An error response from the API. More info [here]('/docs/api-reference/errors')",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "invalid_request_error",
+                  "not_found_error",
+                  "creation_error",
+                  "update_error",
+                  "deletion_error",
+                  "forbidden_error",
+                  "authentication_error"
+                ],
+                "default": "invalid_request_error",
+                "description": "The type of error returned."
+              },
+              "message": {
+                "type": "string",
+                "description": "A human-readable message providing more details about the error.",
+                "example": "Parameter error."
+              },
+              "params": {
+                "type": "array",
+                "description": "The specific request parameters associated with the error. May be omitted if the error message is generic enough to apply to multiple parameters.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "param": {
+                      "type": "string",
+                      "description": "The parameter related to the error.",
+                      "example": "name"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human-readable message providing more details about the error.",
+                      "example": "Name is required."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
