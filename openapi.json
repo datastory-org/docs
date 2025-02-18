@@ -1,0 +1,428 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Datastory API",
+    "version": "1"
+  },
+
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/table": {
+      "post": {
+        "operationId": "create",
+        "summary": "Creat a new ApiToken",
+        "description": "Creates a new ApiToken. The ApiToken is returned, including its `token` field, which you should record for future reference. **Be careful, this token is only returned once, when the token is created.**",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiTokenCreateInput"
+              },
+              "examples": {
+                "ProductionTokenExample": {
+                  "value": {
+                    "name": "Production API Token",
+                    "expires_at": "2025-01-01T00:00:00Z"
+                  },
+                  "summary": "Long-lived token for production use"
+                },
+                "BrowserSessionExample": {
+                  "value": {
+                    "name": "Browser Session Token"
+                  },
+                  "summary": "Token without expiration (use with caution)"
+                },
+                "TemporaryAccessExample": {
+                  "value": {
+                    "name": "Temporary Access Token",
+                    "expires_at": "2023-12-31T23:59:59Z"
+                  },
+                  "summary": "Short-lived token for temporary access"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The created ApiToken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiToken"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/observations/fetch": {
+      "post": {
+        "operationId": "getObservations",
+        "summary": "Fetch observations data",
+        "description": "Retrieves observational data for a specific cube and measure with filtering and pagination capabilities.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["cube_id", "measure_id"],
+                "properties": {
+                  "cube_id": {
+                    "type": "string",
+                    "description": "Identifier for the specific data cube"
+                  },
+                  "measure_id": {
+                    "type": "string",
+                    "description": "Identifier for the measure to analyze"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "default": 10000,
+                    "description": "Maximum number of records to return"
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Number of records to skip for pagination"
+                  },
+                  "observationOutput": {
+                    "type": "string",
+                    "default": "default",
+                    "enum": ["default", "detailed"],
+                    "description": "Level of detail in response"
+                  },
+                  "filters": {
+                    "type": "object",
+                    "description": "Filter criteria including deep filters",
+                    "properties": {
+                      "dimensions": {
+                        "type": "object",
+                        "description": "Direct dimension filters"
+                      },
+                      "deepFilters": {
+                        "type": "object",
+                        "description": "Nested filters requiring item lookups"
+                      }
+                    }
+                  },
+                  "sort": {
+                    "type": "object",
+                    "description": "Sorting parameters for results"
+                  }
+                }
+              },
+              "examples": {
+                "BasicExample": {
+                  "value": {
+                    "cube_id": "customer_behavior",
+                    "measure_id": "purchase_frequency",
+                    "limit": 5000
+                  },
+                  "summary": "Basic observation fetch with default output"
+                },
+                "FilteredExample": {
+                  "value": {
+                    "cube_id": "inventory",
+                    "measure_id": "stock_level",
+                    "filters": {
+                      "dimensions": {
+                        "warehouse_id": ["north", "south"]
+                      },
+                      "deepFilters": {
+                        "product_category": {
+                          "name": { "_eq": "Electronics" }
+                        }
+                      }
+                    },
+                    "sort": {
+                      "timestamp": "desc"
+                    }
+                  },
+                  "summary": "Filtered and sorted observation request"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved observations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObservationsResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/cubes/create": {
+      "post": {
+        "operationId": "createCube",
+        "summary": "Create a new data cube",
+        "description": "Creates a new data cube with specified dimensions. Handles dimension ordering, existing cube checks, and schema setup.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CubeCreateInput"
+              },
+              "examples": {
+                "MultiDimensionExample": {
+                  "value": {
+                    "dimensions": [
+                      "country",
+                      "product_category",
+                      "time_period"
+                    ],
+                    "workspace_id": "ws_12345"
+                  },
+                  "summary": "Cube with multiple dimensions"
+                },
+                "SingleDimensionExample": {
+                  "value": {
+                    "dimensions": ["customer_segment"],
+                    "workspace_id": "ws_67890"
+                  },
+                  "summary": "Single dimension cube"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created cube",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cube"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT Authorization header using the Bearer scheme. Example: 'Authorization: Bearer {token}'"
+      }
+    },
+    "schemas": {
+      "ApiToken": {
+        "type": "object",
+        "description": "An ApiToken is a unique identifier that you can use to authenticate requests to the API. You can create as many ApiTokens as you need.",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "String representing the object's type. Objects of the same type share the same value.",
+            "readOnly": true,
+            "example": "api_token"
+          },
+          "id": {
+            "type": "string",
+            "description": "This is the internal ID for this ApiToken. You don't need to record this information, since you will not need to use it.",
+            "readOnly": true
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user that created this ApiToken.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the ApiToken.",
+            "example": "Production API Token"
+          },
+          "from_browser": {
+            "type": "boolean",
+            "description": "Whether this ApiToken was created from the browser.",
+            "readOnly": true
+          },
+          "last_used_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The last time this ApiToken was used.",
+            "readOnly": true
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time this ApiToken expires."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time at which the object was created.",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time at which the object was last updated.",
+            "readOnly": true
+          },
+          "token": {
+            "type": "string",
+            "description": "The actual token that you will use to authenticate your requests. > **Be careful, this token is only returned once, when the token is created.**",
+            "readOnly": true
+          }
+        }
+      },
+      "ApiTokenCreateInput": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ApiToken"
+          }
+        ],
+        "required": ["name"]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "An error response from the API. More info [here]('/docs/api-reference/errors')",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "invalid_request_error",
+                  "not_found_error",
+                  "creation_error",
+                  "update_error",
+                  "deletion_error",
+                  "forbidden_error",
+                  "authentication_error"
+                ],
+                "default": "invalid_request_error",
+                "description": "The type of error returned."
+              },
+              "message": {
+                "type": "string",
+                "description": "A human-readable message providing more details about the error.",
+                "example": "Parameter error."
+              },
+              "params": {
+                "type": "array",
+                "description": "The specific request parameters associated with the error. May be omitted if the error message is generic enough to apply to multiple parameters.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "param": {
+                      "type": "string",
+                      "description": "The parameter related to the error.",
+                      "example": "name"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A human-readable message providing more details about the error.",
+                      "example": "Name is required."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Cube": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "cube_gdp_per_capita"
+          },
+          "name": {
+            "type": "string",
+            "example": "Country, Year, GDP per Capita (PPP)",
+            "description": "Automatically generated name from development dimensions"
+          },
+          "workspace_id": {
+            "type": "string",
+            "description": "Workspace where the cube is created",
+            "example": "ws_12345"
+          },
+          "cube_dimensions_count": {
+            "type": "integer",
+            "description": "Number of dimensions in the cube",
+            "example": 3
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of cube creation"
+          }
+        }
+      },
+      "CubeCreateInput": {
+        "type": "object",
+        "required": ["dimensions", "workspace_id"],
+        "properties": {
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of property IDs representing development indicators",
+            "example": ["country", "year", "income_level"],
+            "minItems": 1
+          },
+          "workspace_id": {
+            "type": "string",
+            "description": "Workspace ID for development data analysis",
+            "example": "global_dev_2023"
+          }
+        }
+      }
+    }
+  }
+}

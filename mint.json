@@ -11,6 +11,17 @@
   },
 
   "api": {
+    "playground": {
+      "disableProxy": true
+    },
+    "paramFields": {
+      "expanded": "none"
+    },
+    "baseUrl": [
+      "https://datastory-cloud-git-feature-api-v2-datastory-org.vercel.app/api/",
+      "https://platform.datastory.tech/api/"
+    ],
+
     "request": {
       "example": {
         "languages": ["javascript", "python", "curl"]
@@ -103,16 +114,6 @@
       ]
     },
     {
-      "group": "DataCollectionEvents",
-      "pages": [
-        "api-reference/data-collection-events/endpoints",
-        "api-reference/data-collection-events/incoming-object",
-        "api-reference/data-collection-events/list-incoming",
-        "api-reference/data-collection-events/outgoing-object",
-        "api-reference/data-collection-events/list-outgoing"
-      ]
-    },
-    {
       "group": "Platform overview",
       "pages": ["Studio", "Data manager", "Open Data", "Open Blocks"]
     },
@@ -172,6 +173,16 @@
     },
 
     {
+      "group": "Observations",
+
+      "pages": [
+        "docs/statistics/observations/create",
+        "docs/statistics/observations/fetch",
+        "docs/statistics/observations/delete"
+      ]
+    },
+
+    {
       "group": "Measures",
       "pages": [
         "docs/statistics/measures/create-measures",
@@ -183,17 +194,9 @@
     {
       "group": "Data cubes",
       "pages": [
-        "docs/statistics/cubes/create-cubes",
-        "docs/statistics/cubes/fetch-cubes",
-        "docs/statistics/cubes/delete-cubes"
-      ]
-    },
-    {
-      "group": "Observations",
-      "pages": [
-        "docs/statistics/cubes/create-observations",
-        "docs/statistics/cubes/fetch-observations",
-        "docs/statistics/cubes/delete-observations"
+        "docs/statistics/cubes/create",
+        "docs/statistics/cubes/fetch",
+        "docs/statistics/cubes/delete"
       ]
     },
 
