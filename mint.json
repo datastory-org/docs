@@ -12,7 +12,7 @@
 
   "api": {
     "playground": {
-      "disableProxy": true
+      "disableProxy": false
     },
     "paramFields": {
       "expanded": "none"

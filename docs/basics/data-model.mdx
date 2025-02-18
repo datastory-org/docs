@@ -7,6 +7,41 @@ Whether you’re leveraging the Datastory platform for data storytelling, managi
 
 ---
 
+```mermaid
+flowchart TD
+    subgraph Platform["Platform"]
+        direction TB
+        style Platform fill:#e6f3ff,stroke:#99ccff,stroke-width:2px
+        Workspaces
+        Users
+    end
+
+    subgraph Studio["Studio"]
+        direction TB
+        style Studio fill:#e0f2e9,stroke:#99d6b9,stroke-width:2px
+        Visualizations
+        Websites/Pages
+        Templates
+        Blocks
+    end
+
+    subgraph DataManager["Data Manager"]
+        direction TB
+        style DataManager fill:#fff3e6,stroke:#ffcc99,stroke-width:2px
+        Schema
+        Content
+        Statistics
+        Tables
+    end
+
+    %% Vertical layout without connections
+    Platform --> Studio
+    Studio --> DataManager
+    linkStyle 0,1 stroke-width:0
+```
+
+---
+
 ## Platform
 
 The **Platform** is the foundation of Datastory, including concepts like **Workspaces** and **Users**:
@@ -107,3 +142,7 @@ Datastory builds on **Knowledge Graph** concepts and **Linked Data Principles**.
 - **Data Cube Models**: Designed for long-term applications and AI-driven projects.
 
 Additionally, less structured data like **CSV files** is supported, easily converted to **Tables** for simple visualizations or analyses.
+
+```
+
+```
