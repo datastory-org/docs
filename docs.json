@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "palm",
   "name": "Datastory API Docs",
   "colors": {
     "primary": "#7847F5",
@@ -11,11 +11,10 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation2",
-
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Getting Started",
             "pages": [
               "docs/basics/introduction",
               "docs/basics/quickstart",
@@ -23,154 +22,177 @@
             ]
           },
           {
-            "group": "API essentials",
+            "group": "Technical overview",
             "pages": [
-              "docs/basics/data-model",
-              "authorization",
-              "workspace",
-              "permissions",
-              "docs/basics/system-fields",
-              "glossary"
+              {
+                "group": "API Essentials",
+                "icon": "list",
+                "pages": [
+                  "docs/basics/data-model",
+                  "authorization",
+                  "workspace",
+                  "permissions",
+                  "docs/basics/system-fields",
+                  "glossary"
+                ]
+              }
             ]
           },
           {
-            "group": "Platform overview",
-            "pages": ["Studio", "Data manager", "Open Data", "Open Blocks"]
+            "group": "Platform Overview",
+            "pages": ["Studio", "CMS", "Open Data", "Open Blocks"]
           }
         ]
       },
       {
-        "tab": "Schema",
+        "tab": "CMS",
         "groups": [
           {
-            "group": "Models",
+            "group": "CMS",
             "pages": [
-              "docs/schema/models/overview",
-              "docs/schema/models/create-model",
-              "docs/schema/models/update-model",
-              "docs/schema/models/list-models",
-              "docs/schema/models/duplicate-model"
-            ]
-          },
-          {
-            "group": "Fields",
-            "pages": [
-              "docs/schema/fields/overview",
-              "docs/schema/fields/create-field",
-              "docs/schema/fields/update-field",
-              "docs/schema/fields/list-fields",
-              "docs/schema/fields/delete-field"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Content",
-        "groups": [
-          {
-            "group": "Content",
-            "pages": [
-              "docs/content/overview",
-              "docs/content/fetch-items",
-              "docs/content/create-items",
-              "docs/content/update-items",
-              "docs/content/publish-items",
-              "docs/content/unpublish-items",
-              "docs/content/search (deprecated)",
-              "docs/content/duplicate-items (beta)"
-            ]
-          },
-          {
-            "group": "Media assets",
-            "pages": [
-              "docs/content/media/overview",
-              "docs/content/media/create-assets",
-              "docs/content/media/list-assets",
-              "docs/content/media/delete-assets",
-              "docs/content/media/update-assets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Data cubes",
-        "groups": [
-          {
-            "group": "Statistics",
-            "pages": [
-              "docs/statistics/overview",
-              "docs/statistics/recipe-for-bulk-load"
-            ]
-          },
-          {
-            "group": "Observations",
-            "pages": [
-              "docs/statistics/observations/create",
-              "docs/statistics/observations/fetch",
-              "docs/statistics/observations/delete"
-            ]
-          },
-          {
-            "group": "Measures",
-            "pages": [
-              "docs/statistics/measures/create-measures",
-              "docs/statistics/measures/fetch-measures",
-              "docs/statistics/measures/delete-measures"
-            ]
-          },
-          {
-            "group": "Data cubes",
-            "pages": [
-              "docs/statistics/cubes/create",
-              "docs/statistics/cubes/fetch",
-              "docs/statistics/cubes/delete"
-            ]
-          },
-          {
-            "group": "Insights",
-            "pages": [
-              "docs/statistics/insights/suggest-charts",
-              "docs/statistics/insights/suggest-insights"
+              {
+                "group": "Collections",
+                "icon": "database",
+                "pages": [
+                  "docs/cms/collections/overview",
+                  "docs/cms/collections/create",
+                  "docs/cms/collections/update",
+                  "docs/cms/collections/list",
+                  "docs/cms/collections/duplicate"
+                ]
+              },
+              {
+                "group": "Collection Fields",
+                "icon": "input-text",
+                "pages": [
+                  "docs/schema/fields/overview",
+                  "docs/schema/fields/create-field",
+                  "docs/schema/fields/update-field",
+                  "docs/schema/fields/list-fields",
+                  "docs/schema/fields/delete-field"
+                ]
+              },
+              {
+                "group": "Collection Items",
+                "icon": "table-list",
+                "pages": [
+                  "docs/content/overview",
+                  "docs/content/fetch-items",
+                  "docs/content/create-items",
+                  "docs/content/update-items",
+                  "docs/content/publish-items",
+                  "docs/content/unpublish-items",
+                  "docs/content/search (deprecated)",
+                  "docs/content/duplicate-items (beta)"
+                ]
+              },
+              {
+                "group": "Media assets",
+                "icon": "image",
+                "pages": [
+                  "docs/content/media/overview",
+                  "docs/content/media/create-assets",
+                  "docs/content/media/list-assets",
+                  "docs/content/media/delete-assets",
+                  "docs/content/media/update-assets"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Tables",
-        "groups": [
-          {
-            "group": "Tables & Bindings",
-            "pages": ["docs/tables/overview"]
-          },
-          {
-            "group": "Tables",
-            "pages": [
-              "docs/tables/create",
-              "docs/tables/fetch",
-              "docs/tables/delete-tables",
-              "docs/tables/detect-columns"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Visualizations",
+        "tab": "Studio",
         "groups": [
           {
             "group": "Visualizations",
-            "pages": ["docs/visualizations/overview"]
+            "pages": ["docs/studio/visualizations/list"]
+          },
+          {
+            "group": "Websites",
+            "pages": ["docs/studio/websites/overview"]
           }
         ]
       },
       {
-        "tab": "Websites",
+        "tab": "Metrics, Cubes and Insights",
         "groups": [
           {
-            "group": "Websites",
-            "pages": ["docs/websites-pages/overview"]
+            "group": "Linked data with Cubes",
+            "pages": [
+              {
+                "group": "Getting started",
+                "icon": "chart-line",
+                "pages": [
+                  "docs/statistics/overview",
+                  "docs/statistics/recipe-for-bulk-load"
+                ]
+              },
+              {
+                "group": "Observations",
+                "icon": "eye",
+                "pages": [
+                  "docs/statistics/observations/create",
+                  "docs/statistics/observations/fetch",
+                  "docs/statistics/observations/delete"
+                ]
+              },
+              {
+                "group": "Measures",
+                "icon": "ruler",
+                "pages": [
+                  "docs/statistics/measures/create-measures",
+                  "docs/statistics/measures/fetch-measures",
+                  "docs/statistics/measures/delete-measures"
+                ]
+              },
+              {
+                "group": "Data cubes",
+                "icon": "cube",
+                "pages": [
+                  "docs/statistics/cubes/create",
+                  "docs/statistics/cubes/fetch",
+                  "docs/statistics/cubes/delete"
+                ]
+              },
+              {
+                "group": "Insights",
+                "icon": "lightbulb",
+                "pages": [
+                  "docs/statistics/insights/suggest-charts",
+                  "docs/statistics/insights/suggest-insights"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Simple tables",
+            "pages": [
+              {
+                "group": "Tables",
+                "icon": "table",
+                "pages": [
+                  "docs/tables/create",
+                  "docs/tables/fetch",
+                  "docs/tables/delete-tables",
+                  "docs/tables/detect-columns"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Survey data",
+            "pages": [
+              {
+                "group": "Surveys",
+                "icon": "table",
+                "pages": ["docs/data/surveys/overview"]
+              }
+            ]
           }
         ]
       },
+
       {
         "tab": "AI",
         "groups": [
