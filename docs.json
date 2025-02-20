@@ -4,10 +4,10 @@
   "name": "Datastory API Docs",
   "colors": {
     "primary": "#7847F5",
-    "light": "#07C983",
+    "light": "#7847F5",
     "dark": "#0D9373"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": {
     "tabs": [
       {
@@ -15,11 +15,16 @@
         "groups": [
           {
             "group": "Getting Started",
+
             "pages": [
-              "docs/basics/introduction",
+              "docs/basics/what-is-datastory",
               "docs/basics/quickstart",
               "docs/basics/clients"
             ]
+          },
+          {
+            "group": "Platform Guides",
+            "pages": ["Studio", "CMS", "Open Data", "Open Blocks"]
           },
           {
             "group": "Technical overview",
@@ -37,18 +42,18 @@
                 ]
               }
             ]
-          },
-          {
-            "group": "Platform Overview",
-            "pages": ["Studio", "CMS", "Open Data", "Open Blocks"]
           }
         ]
       },
       {
-        "tab": "CMS",
+        "tab": "CMS API",
         "groups": [
           {
             "group": "CMS",
+            "pages": ["docs/cms/overview"]
+          },
+          {
+            "group": "Collections, fields and items",
             "pages": [
               {
                 "group": "Collections",
@@ -98,15 +103,25 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "Import and export",
+            "pages": [
+              {
+                "group": "Export",
+                "icon": "database",
+                "pages": ["docs/cms/import-export/export"]
+              }
+            ]
           }
         ]
       },
       {
-        "tab": "Studio",
+        "tab": "Studio API",
         "groups": [
           {
             "group": "Visualizations",
-            "pages": ["docs/studio/visualizations/list"]
+            "pages": ["docs/studio/overview"]
           },
           {
             "group": "Websites",
@@ -115,52 +130,53 @@
         ]
       },
       {
-        "tab": "Metrics, Cubes and Insights",
+        "tab": "Data API",
         "groups": [
+          {
+            "group": "Data",
+            "pages": ["docs/data/overview"]
+          },
           {
             "group": "Linked data with Cubes",
             "pages": [
               {
                 "group": "Getting started",
                 "icon": "chart-line",
-                "pages": [
-                  "docs/statistics/overview",
-                  "docs/statistics/recipe-for-bulk-load"
-                ]
+                "pages": ["docs/data/recipe-for-bulk-load"]
               },
               {
                 "group": "Observations",
                 "icon": "eye",
                 "pages": [
-                  "docs/statistics/observations/create",
-                  "docs/statistics/observations/fetch",
-                  "docs/statistics/observations/delete"
+                  "docs/data/observations/create",
+                  "docs/data/observations/fetch",
+                  "docs/data/observations/delete"
                 ]
               },
               {
                 "group": "Measures",
                 "icon": "ruler",
                 "pages": [
-                  "docs/statistics/measures/create-measures",
-                  "docs/statistics/measures/fetch-measures",
-                  "docs/statistics/measures/delete-measures"
+                  "docs/data/measures/create-measures",
+                  "docs/data/measures/fetch-measures",
+                  "docs/data/measures/delete-measures"
                 ]
               },
               {
                 "group": "Data cubes",
                 "icon": "cube",
                 "pages": [
-                  "docs/statistics/cubes/create",
-                  "docs/statistics/cubes/fetch",
-                  "docs/statistics/cubes/delete"
+                  "docs/data/cubes/create",
+                  "docs/data/cubes/fetch",
+                  "docs/data/cubes/delete"
                 ]
               },
               {
                 "group": "Insights",
                 "icon": "lightbulb",
                 "pages": [
-                  "docs/statistics/insights/suggest-charts",
-                  "docs/statistics/insights/suggest-insights"
+                  "docs/data/insights/suggest-charts",
+                  "docs/data/insights/suggest-insights"
                 ]
               }
             ]
@@ -168,6 +184,7 @@
           {
             "group": "Simple tables",
             "pages": [
+              "docs/tables/overview",
               {
                 "group": "Tables",
                 "icon": "table",
@@ -194,7 +211,7 @@
       },
 
       {
-        "tab": "AI",
+        "tab": "AI & Insights API",
         "groups": [
           {
             "group": "AI",
@@ -203,7 +220,7 @@
         ]
       },
       {
-        "tab": "Open data",
+        "tab": "Open data API",
         "groups": [
           {
             "group": "Open data",

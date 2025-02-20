@@ -244,6 +244,92 @@
           }
         }
       }
+    },
+    "/v1/export": {
+      "post": {
+        "operationId": "exportData",
+        "summary": "Export data from specified measures and collections",
+        "description": "Initiates a bulk export of data from specified measures and collections. Returns an export job ID and status.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["measure_ids", "collection_ids"],
+                "properties": {
+                  "measure_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of measure IDs to include in export"
+                  },
+                  "collection_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of collection IDs to include in export"
+                  },
+                  "format": {
+                    "type": "string",
+                    "enum": ["csv", "json", "xlsx"],
+                    "default": "csv",
+                    "description": "Output format for the exported data"
+                  },
+                  "include_metadata": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to include schema metadata in export"
+                  }
+                }
+              },
+              "examples": {
+                "BasicExport": {
+                  "value": {
+                    "measure_ids": ["meas_123", "meas_456"],
+                    "collection_ids": ["coll_789", "coll_012"],
+                    "format": "csv"
+                  },
+                  "summary": "Basic CSV export request"
+                },
+                "MetadataExport": {
+                  "value": {
+                    "measure_ids": ["meas_345"],
+                    "collection_ids": ["coll_678"],
+                    "format": "json",
+                    "include_metadata": true
+                  },
+                  "summary": "JSON export with metadata"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Export job initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -420,6 +506,33 @@
             "type": "string",
             "description": "Workspace ID for development data analysis",
             "example": "global_dev_2023"
+          }
+        }
+      },
+      "ExportResponse": {
+        "type": "object",
+        "properties": {
+          "export_id": {
+            "type": "string",
+            "description": "Unique identifier for the export job",
+            "example": "export_12345"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "processing", "completed", "failed"],
+            "default": "pending",
+            "description": "Current status of the export job"
+          },
+          "download_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to download completed export (available when status=completed)",
+            "example": "https://api.example.com/exports/export_12345.csv"
+          },
+          "estimated_duration": {
+            "type": "integer",
+            "description": "Estimated processing time in seconds",
+            "example": 60
           }
         }
       }
