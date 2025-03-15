@@ -117,19 +117,6 @@
         ]
       },
       {
-        "tab": "Studio API",
-        "groups": [
-          {
-            "group": "Visualizations",
-            "pages": ["docs/studio/overview"]
-          },
-          {
-            "group": "Websites",
-            "pages": ["docs/studio/websites/overview"]
-          }
-        ]
-      },
-      {
         "tab": "Data API",
         "groups": [
           {
@@ -211,7 +198,21 @@
       },
 
       {
-        "tab": "AI & Insights API",
+        "tab": "Studio API*",
+        "groups": [
+          {
+            "group": "Visualizations",
+            "pages": ["docs/studio/overview"]
+          },
+          {
+            "group": "Websites",
+            "pages": ["docs/studio/websites/overview"]
+          }
+        ]
+      },
+
+      {
+        "tab": "AI & Insights API*",
         "groups": [
           {
             "group": "AI",
@@ -220,7 +221,7 @@
         ]
       },
       {
-        "tab": "Open data API",
+        "tab": "Open data API*",
         "groups": [
           {
             "group": "Open data",
