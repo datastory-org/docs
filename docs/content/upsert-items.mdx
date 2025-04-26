@@ -1,0 +1,49 @@
+---
+title: "Upsert Items"
+openapi: "POST /api/v1/items/upsert"
+---
+
+## MatchOn Behavior
+
+The `matchOn` parameter can be provided either as a top-level property on the item object, or as a property within the `properties` array. If both are present, the top-level property takes precedence.
+
+For example, when using `matchOn: "iso2"`, you can provide the ISO code either as:
+```typescript
+{
+  "iso2": "SE",  // top-level property
+  "class_id": "Country",
+  // ...
+}
+```
+or as:
+```typescript
+{
+  "class_id": "Country",
+  "properties": [
+    { "id": "iso2", "statements": [{ "data_value": "SE" }] }  // property in array
+  ]
+}
+```
+
+## Property Update Behavior
+
+When updating items, the API handles properties in the following ways:
+
+- Properties not included in the update request are preserved
+- Properties included with statements are updated with the new values
+- Properties included with an empty statements array are deleted
+
+Example of property deletion:
+```typescript
+{
+  "data": [
+    {
+      "id": "sweden",
+      "class_id": "Country",
+      "properties": [
+        { "id": "population", "statements": [] } // This will delete the population property
+      ]
+    }
+  ]
+}
+```
