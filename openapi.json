@@ -361,13 +361,14 @@
                 "required": ["data"]
               },
               "examples": {
-                "DefaultIdKey": {
+                "Match by ID": {
                   "summary": "Using default id key",
                   "value": {
                     "data": [
                       {
+                        "id": "sweden",
                         "class_id": "Country",
-                        "workspace_id": "datastory_cloud",
+                        "workspace_id": "open_data",
                         "properties": [
                           {
                             "id": "name",
@@ -380,40 +381,19 @@
                           {
                             "id": "population",
                             "statements": [{ "data_value": 10400000 }]
-                          }
-                        ]
-                      },
-                      {
-                        "id": "norway",
-                        "class_id": "Country",
-                        "workspace_id": "datastory_cloud",
-                        "properties": [
-                          {
-                            "id": "name",
-                            "statements": [
-                              { "data_value": { "en": "Kingdom of Norway" } }
-                            ]
-                          },
-                          {
-                            "id": "iso2",
-                            "statements": [{ "data_value": "NO" }]
-                          },
-                          {
-                            "id": "population",
-                            "statements": [{ "data_value": 5400000 }]
                           }
                         ]
                       }
                     ]
                   }
                 },
-                "CustomStatementProperty": {
+                "Match by Statement": {
                   "summary": "Using custom statement property",
                   "value": {
                     "data": [
                       {
                         "class_id": "Country",
-                        "workspace_id": "datastory_cloud",
+                        "workspace_id": "open_data",
                         "properties": [
                           {
                             "id": "name",
@@ -426,24 +406,6 @@
                           {
                             "id": "population",
                             "statements": [{ "data_value": 10400000 }]
-                          }
-                        ]
-                      },
-                      {
-                        "class_id": "Country",
-                        "workspace_id": "datastory_cloud",
-                        "properties": [
-                          {
-                            "id": "name",
-                            "statements": [{ "data_value": { "en": "Norway" } }]
-                          },
-                          {
-                            "id": "iso2",
-                            "statements": [{ "data_value": "NO" }]
-                          },
-                          {
-                            "id": "population",
-                            "statements": [{ "data_value": 5400000 }]
                           }
                         ]
                       }
@@ -579,52 +541,15 @@
       },
       "ErrorResponse": {
         "type": "object",
-        "description": "An error response from the API. More info [here]('/docs/api-reference/errors')",
+        "description": "Error response from the API",
         "properties": {
           "error": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "invalid_request_error",
-                  "not_found_error",
-                  "creation_error",
-                  "update_error",
-                  "deletion_error",
-                  "forbidden_error",
-                  "authentication_error"
-                ],
-                "default": "invalid_request_error",
-                "description": "The type of error returned."
-              },
-              "message": {
-                "type": "string",
-                "description": "A human-readable message providing more details about the error.",
-                "example": "Parameter error."
-              },
-              "params": {
-                "type": "array",
-                "description": "The specific request parameters associated with the error. May be omitted if the error message is generic enough to apply to multiple parameters.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "param": {
-                      "type": "string",
-                      "description": "The parameter related to the error.",
-                      "example": "name"
-                    },
-                    "message": {
-                      "type": "string",
-                      "description": "A human-readable message providing more details about the error.",
-                      "example": "Name is required."
-                    }
-                  }
-                }
-              }
-            }
+            "type": "string",
+            "description": "Error message",
+            "example": "Missing required parameter `class_id`"
           }
-        }
+        },
+        "required": ["error"]
       },
       "Cube": {
         "type": "object",
