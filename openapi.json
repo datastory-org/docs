@@ -334,7 +334,7 @@
     "/api/v1/items/upsert": {
       "post": {
         "summary": "Upsert Items",
-        "description": "Create or update multiple items in a single operation. Items are matched using a specified key (matchOn) - if a match is found, the item is updated; if no match is found, a new item is created. The operation is atomic: all items are either processed successfully or none are.",
+        "description": "Create or update multiple items in a single operation. Items are matched using a specified key (matchOn) - if a match is found, the item is updated; if no match is found, a new item is created. This endpoint runs each batch in a single transaction—if any item fails, the entire batch is rolled back, so either all items succeed or none do.",
         "operationId": "upsertItems",
         "requestBody": {
           "required": true,
