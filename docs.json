@@ -83,6 +83,7 @@
                 "pages": [
                   "docs/content/overview",
                   "docs/content/fetch-items",
+                  "docs/content/upsert-items",
                   "docs/content/create-items",
                   "docs/content/update-items",
                   "docs/content/publish-items",
