@@ -47,3 +47,32 @@ Example of property deletion:
   ]
 }
 ```
+
+## Relationship Property Format
+
+When creating or updating relationship properties, you must provide the explicit
+ID of the related item in the `data_value` field. This is different from other
+property types that use a direct value.
+
+Example of a relationship property:
+```typescript
+{
+  "data": [
+    {
+      "id": "stockholm",
+      "class_id": "City",
+      "properties": [
+        {
+          "id": "country",
+          "statements": [
+            { "data_value": { "id": "sweden" } } // Reference to the sweden item
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+> **Note:** If the referenced item doesn't exist in the database, a foreign key
+violation error will be raised.
